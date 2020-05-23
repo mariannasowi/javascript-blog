@@ -9,7 +9,7 @@ const titleClickHandler = function(event){
   const activeLinks = document.querySelectorAll('.titles a.active');
 
   for(let activeLink of activeLinks){
-  activeLink.classList.remove('active');
+    activeLink.classList.remove('active');
   }
 
   /* [IN PROGRESS] add class 'active' to the clicked link */
@@ -36,12 +36,6 @@ const titleClickHandler = function(event){
   console.log('Active article is:', targetArticle);
 }
 
-const links = document.querySelectorAll('.titles a');
-
-for(let link of links){
-  link.addEventListener('click', titleClickHandler);
-
-
 // Module 6.4
 
 const optArticleSelector = '.post',
@@ -61,7 +55,7 @@ function generateTitleLinks(){
   /* find all the articles and save them to variable articles */
   const articles = document.querySelectorAll(optArticleSelector);
 
-let html = '';
+  let html = '';
 
   /* for each article */
   for(let article of articles){
@@ -85,7 +79,6 @@ let html = '';
   }
 
   titleList.innerHTML = html;
-}
 
   const links = document.querySelectorAll('.titles a');
   console.log(links);
@@ -93,6 +86,6 @@ let html = '';
   for(let link of links){
     link.addEventListener('click', titleClickHandler);
   }
+}
 
 generateTitleLinks();
-}
