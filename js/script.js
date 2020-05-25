@@ -39,18 +39,18 @@ const titleClickHandler = function(event){
 // Module 6.4
 
 const optArticleSelector = '.post',
-      optTitleSelector = '.post-title',
-      optTitleListSelector = '.titles';
-      optArticleTagsSelector = '.post-tags .list';
+  optTitleSelector = '.post-title',
+  optTitleListSelector = '.titles',
+  optArticleTagsSelector = '.post-tags .list';
 
 function generateTitleLinks(){
-  console.log('function generateTitleLinks has started')
+  console.log('function generateTitleLinks has started');
 
   /* remove contents of titleList */
-  const titleList = document.querySelector(optTitleListSelector)
-  console.log('znaleziono linki')
+  const titleList = document.querySelector(optTitleListSelector);
+  console.log('znaleziono linki');
   titleList.innerHTML = '';
-  console.log('wyczyszczono linki')
+  console.log('wyczyszczono linki');
 
   /* find all the articles and save them to variable articles */
   const articles = document.querySelectorAll(optArticleSelector);
@@ -62,7 +62,7 @@ function generateTitleLinks(){
 
     /* get the article id */
     const articleId = article.getAttribute('id');
-        console.log('odczytanie atrybutu ID');
+    console.log('odczytanie atrybutu ID');
 
     /* find the title element */
     const articleTitle = article.querySelector(optTitleSelector).innerHTML;
@@ -89,3 +89,33 @@ function generateTitleLinks(){
 }
 
 generateTitleLinks();
+
+// Module 7.2
+
+function generateTags(){
+  /* find all articles */
+
+  /* START LOOP: for every article: */
+
+    /* find tags wrapper */
+
+    /* make html variable with empty string */
+
+    /* get tags from data-tags attribute */
+
+    /* split tags into array */
+
+    /* START LOOP: for each tag */
+
+      /* generate HTML of the link */
+
+      /* add generated code to html variable */
+
+    /* END LOOP: for each tag */
+
+    /* insert HTML of all the links into the tags wrapper */
+
+  /* END LOOP: for every article: */
+}
+
+generateTags();
