@@ -42,14 +42,14 @@ const titleClickHandler = function(event){
 // Module 6.4
 
 const opts = {
-  articleSelector = '.post',
-  titleSelector = '.post-title',
-  titleListSelector = '.titles',
-  articleTagsSelector = '.post-tags .list',
-  articleAuthorSelector = '.section-title .list-authors',
-  tagsListSelector = '.5',
-  caseloudClassPrefix = '.tag-size-',
-  authorsListSelector = ''
+  articleSelector: '.post',
+  titleSelector: '.post-title',
+  titleListSelector: '.titles',
+  articleTagsSelector: '.post-tags .list',
+  articleAuthorSelector: '.section-title .list-authors',
+  cloudClassCount: '5',
+  cloudClassPrefix: '.tag-size-',
+  authorsListSelector: '.authors .list'
 };
 
 
@@ -57,13 +57,13 @@ function generateTitleLinks(customSelector = ''){
   console.log('Function generateTitleLinks has started');
 
   /* remove contents of titleList */
-  const titleList = document.querySelector(optTitleListSelector);
+  const titleList = document.querySelector(opts.titleListSelector);
   console.log('Tags found');
   titleList.innerHTML = '';
   console.log('Links cleared');
 
   /* find all the articles and save them to variable articles */
-  const articles = document.querySelectorAll(optArticleSelector + customSelector);
+  const articles = document.querySelectorAll(opts.articleSelector + customSelector);
 
   let html = '';
 
@@ -75,7 +75,7 @@ function generateTitleLinks(customSelector = ''){
     console.log('Read attribute ID');
 
     /* find the title element */
-    const articleTitle = article.querySelector(optTitleSelector).innerHTML;
+    const articleTitle = article.querySelector(opts.titleSelector).innerHTML;
     console.log('Article title read');
 
     /* get the title from the title element */
@@ -114,17 +114,16 @@ function calculateTagsParams(tags){
   }
   return params;
 }
-calculateTagsParams();
 
 
 
-function calculateTagClass(){
+function calculateTagClass(count, params){
   const normalizedCount = count - params.min;
   const normalizedMax = params.max - params.min;
   const percentage = normalizedCount / normalizedMax;
-  const classNumber = Math.floor( percentage * (optCloudClassCount - 1) + 1 );
+  const classNumber = Math.floor(percentage * (opts.cloudClassCount - 1) + 1 );
+  return 'tag-size-' + classNumber;
 }
-calculateTagClass();
 
 
 
@@ -133,14 +132,14 @@ function generateTags(){
   let allTags = {};
 
   /* find all articles */
-  const articles = document.querySelectorAll(optArticleSelector);
+  const articles = document.querySelectorAll(opts.articleSelector);
   console.log('Articles found:', articles);
 
   /* START LOOP: for every article: */
   for(let article of articles){
 
     /* find tags wrapper */
-    const tagsWrapper = article.querySelector(optArticleTagsSelector);
+    const tagsWrapper = article.querySelector(opts.articleTagsSelector);
     console.log('Tag wrappers found:', tagsWrapper);
 
     /* make html variable with empty string */
@@ -253,7 +252,6 @@ function tagClickHandler(event){
   /* execute function "generateTitleLinks" with article selector as argument */
   generateTitleLinks('[data-tags~="' + tag + '"]');
 }
-tagClickHandler();
 
 
 
@@ -272,15 +270,6 @@ function addClickListenersToTags(){
   }
 }
 addClickListenersToTags();
-
-
-
-function generateAuthors(){
-  /* find all articles */
-  const articles = document.querySelectorAll(optArticleSelector);
-  console.log('Articles found:', articles);
-}
-generateAuthors();
 
 
 
@@ -328,7 +317,7 @@ function authorClickHandler(event){
   /* execute function "generateTitleLinks" with article selector as argument */
   generateTitleLinks('[data-author="' + author + '"]');
 }
-authorClickHandler();
+
 
 
 function addClickListenersToAuthors(){
