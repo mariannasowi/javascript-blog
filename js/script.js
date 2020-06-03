@@ -45,7 +45,7 @@ const opts = {
   cloudClassCount: '5',
   cloudClassPrefix: '.tag-size-',
   articleAuthorSelector: '.section-title .post-author',
-  authorListSelector: '.post-author'
+  authorListSelector: '.post-author .list'
 }
 
 
@@ -347,8 +347,8 @@ function generateAuthors(){
     for (let article of articles){
 
       /* find tags wrapper */
-      const authorWrapper = article.querySelector(opts.authorListSelector);
-      console.log('List author', authorWrapper);
+      const authorList = article.querySelector(opts.authorListSelector);
+      console.log('List author', authorList);
 
       /* make html variable with empty string */
       let html = '';
@@ -387,7 +387,7 @@ function generateAuthors(){
         }
 
       /* insert HTML of all the links into the tags wrapper */
-      authorWrapper.innerHTML = html;
+      authorList.innerHTML = html;
 
     /* END LOOP: for every article: */
     }
