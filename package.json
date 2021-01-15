@@ -44,7 +44,7 @@
     "stylelint-scss": "^3.17.2"
   },
   "dependencies": {
-    "html-validate": "^2.23.0",
+    "html-validate": "^2.23.1",
     "mustache": "^4.0.1"
   }
 }
