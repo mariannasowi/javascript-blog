@@ -45,6 +45,6 @@
   },
   "dependencies": {
     "html-validate": "^2.23.0",
-    "mustache": "^4.0.1"
+    "mustache": "^4.2.0"
   }
 }
